@@ -1,11 +1,11 @@
 {
-    "name": "cordova-windows",
-    "version": "3.9.0-dev",
-    "description": "cordova-windows release",
+    "name": "cordova-windows-nufix",
+    "version": "3.9.0-nufixpre-01",
+    "description": "cordova-windows (universal 8.1) release, working for mixed platforms",
     "main": "bin/create",
     "repository": {
         "type": "git",
-        "url": "https://github.com/apache/cordova-windows"
+        "url": "https://github.com/litehelpers/cordova-windows-nufix"
     },
     "keywords": [
         "windows",
@@ -39,6 +39,6 @@
         "shelljs",
         "elementtree"
     ],
-    "author": "Apache Software Foundation",
+    "author": "Apache Software Foundation/Litehelpers",
     "license": "Apache Version 2.0"
 }
