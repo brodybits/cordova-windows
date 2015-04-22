@@ -19,6 +19,9 @@
 # appveyor file
 # http://www.appveyor.com/docs/appveyor-yml
 
+# Do not build on tags [GitHub]
+skip_tags: true
+
 install:
   - npm install
 
