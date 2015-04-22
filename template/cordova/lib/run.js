@@ -22,7 +22,6 @@ var Q = require('q'),
     path  = require('path'),
     build = require('./build'),
     utils = require('./utils'),
-    ConfigParser = require('./ConfigParser'),
     packages = require('./package');
 
 var ROOT = path.join(__dirname, '..', '..');
@@ -53,11 +52,6 @@ module.exports.run = function (argv) {
         buildArchs   = args.archs ? args.archs.split(' ') : ['anycpu'],
         projectType  = args.phone ? 'phone' : 'windows',
         deployTarget = args.target ? args.target : args.device ? 'device' : 'emulator';
-
-    // for win switch we should correctly handle 8.0 and 8.1 version as per configuration
-    if (projectType == 'windows' && getWindowsTargetVersion() == '8.0') {
-        projectType = 'windows80';
-    }
 
     // if --nobuild isn't specified then build app first
     var buildPackages = args.nobuild ? Q() : build.run(argv);
@@ -95,18 +89,3 @@ module.exports.help = function () {
     console.log('');
     process.exit(0);
 };
-
-
-function getWindowsTargetVersion() {
-    var config = new ConfigParser(path.join(ROOT, 'config.xml'));
-    var windowsTargetVersion = config.getPreference('windows-target-version');
-    switch(windowsTargetVersion) {
-    case '8':
-    case '8.0':
-        return '8.0';
-    case '8.1':
-        return '8.1';
-    default:
-        throw new Error('Unsupported windows-target-version value: ' + windowsTargetVersion);
-    }
-}

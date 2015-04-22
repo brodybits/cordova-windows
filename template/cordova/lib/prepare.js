@@ -42,14 +42,13 @@ module.exports.applyPlatformConfig = function () {
 
     // Apply appxmanifest changes
     [{ fileName: 'package.windows.appxmanifest',   namespacePrefix: 'm2:' }, 
-     { fileName: 'package.windows80.appxmanifest', namespacePrefix: '' },
      { fileName: 'package.phone.appxmanifest',     namespacePrefix: 'm3:' }].forEach(
         function(manifestFile) {
             updateManifestFile(config, path.join(ROOT, manifestFile.fileName), manifestFile.namespacePrefix);
     });
 
     // Apply jsproj changes
-    ['CordovaApp.Phone.jsproj', 'CordovaApp.Windows.jsproj', 'CordovaApp.Windows80.jsproj'].forEach(
+    ['CordovaApp.Phone.jsproj', 'CordovaApp.Windows.jsproj'].forEach(
         function(jsprojFile) {
             updatejsprojFile(config, path.join(ROOT, jsprojFile));
     });

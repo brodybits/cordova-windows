@@ -229,21 +229,7 @@ describe('run method', function() {
         });
     });
 
-    it('spec.8 should call buildProject of MSBuildTools if built with MSBuildTools version 4.0', function(done) {
-        var buildSpy = jasmine.createSpy();
-
-        build.__set__('utils.isCordovaProject', isCordovaProjectTrue);
-        createFindAvailableVersionMock('4.0', testPath, buildSpy);
-        build.__set__('prepare.applyPlatformConfig', function() {} );
-
-        build.run([ 'node', buildPath, '--win' ])
-        .finally(function() {
-            expect(buildSpy).toHaveBeenCalled();
-            done();
-        });
-    });
-
-    it('spec.9 should call buildProject of MSBuildTools if built for windows 8.1', function(done) {
+    it('spec.8 should call buildProject of MSBuildTools if built for windows 8.1', function(done) {
         var buildSpy = jasmine.createSpy();
 
         build.__set__('utils.isCordovaProject', isCordovaProjectTrue);
@@ -258,7 +244,7 @@ describe('run method', function() {
         });
     });
 
-    it('spec.10 should throw an error if windows-target-version has unsupported value', function(done) {
+    it('spec.9 should throw an error if windows-target-version has unsupported value', function(done) {
         var buildSpy = jasmine.createSpy(),
             errorSpy = jasmine.createSpy();
 
@@ -279,7 +265,7 @@ describe('run method', function() {
         });
     });
 
-    it('spec.11 should call buildProject of MSBuildTools if built for windows phone 8.1', function(done) {
+    it('spec.10 should call buildProject of MSBuildTools if built for windows phone 8.1', function(done) {
         var buildSpy = jasmine.createSpy();
 
         build.__set__('utils.isCordovaProject', isCordovaProjectTrue);
@@ -294,7 +280,7 @@ describe('run method', function() {
         });
     });
 
-    it('spec.12 should throw an error if windows-phone-target-version has unsupported value', function(done) {
+    it('spec.11 should throw an error if windows-phone-target-version has unsupported value', function(done) {
         var buildSpy = jasmine.createSpy(),
             errorSpy = jasmine.createSpy();
 

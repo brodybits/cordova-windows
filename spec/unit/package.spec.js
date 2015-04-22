@@ -43,23 +43,7 @@ describe('getPackage method', function() {
         shell.cp('-R', testPkgPath, pkgRoot);
     });
 
-    it('spec.1 should find windows 8.0 anycpu debug package', function(done) {
-        var rejected = jasmine.createSpy();
-
-        pkg.getPackage('windows80', 'debug', 'anycpu')
-        .then(function(pkgInfo) {
-            expect(pkgInfo.type).toBe('windows80');
-            expect(pkgInfo.buildtype).toBe('debug');
-            expect(pkgInfo.arch).toBe('anycpu');
-            expect(pkgInfo.file).toBeDefined();
-        }, rejected)
-        .finally(function() {
-            expect(rejected).not.toHaveBeenCalled();
-            done();
-        });
-    });
-
-    it('spec.2 should find windows phone anycpu debug package', function(done) {
+    it('spec.1 should find windows phone anycpu debug package', function(done) {
         var rejected = jasmine.createSpy();
 
         pkg.getPackage('phone', 'debug', 'anycpu')
@@ -75,32 +59,10 @@ describe('getPackage method', function() {
         });
     });
 
-    it('spec.3 should not find windows anycpu debug package', function(done) {
+    it('spec.2 should not find windows anycpu debug package', function(done) {
         var resolved = jasmine.createSpy();
 
         pkg.getPackage('windows', 'debug', 'anycpu')
-        .then(resolved)
-        .finally(function() {
-            expect(resolved).not.toHaveBeenCalled();
-            done();
-        });
-    });
-
-    it('spec.4 should not find windows 8.0 anycpu release package', function(done) {
-        var resolved = jasmine.createSpy();
-
-        pkg.getPackage('windows80', 'release', 'anycpu')
-        .then(resolved)
-        .finally(function() {
-            expect(resolved).not.toHaveBeenCalled();
-            done();
-        });
-    });
-
-    it('spec.5 should not find windows 8.0 x86 debug package', function(done) {
-        var resolved = jasmine.createSpy();
-
-        pkg.getPackage('windows', 'debug', 'x86')
         .then(resolved)
         .finally(function() {
             expect(resolved).not.toHaveBeenCalled();
@@ -114,7 +76,7 @@ describe('getPackage method', function() {
 });
 
 describe('getPackageFileInfo method', function() {
-    it('spec.6 should get file info correctly for wp8 anycpu debug package', function() {
+    it('spec.3 should get file info correctly for wp8 anycpu debug package', function() {
         var packageFile = path.join(pkgPath, 'CordovaApp.Phone_0.0.1.0_debug_Test', 'CordovaApp.Phone_0.0.1.0_AnyCPU_debug.appxbundle');
         var pkgInfo = pkg.getPackageFileInfo(packageFile);
 
@@ -123,25 +85,7 @@ describe('getPackageFileInfo method', function() {
         expect(pkgInfo.buildtype).toBe('debug');
     });
 
-    it('spec.7 should get file info correctly for windows 8.0 anycpu debug package', function() {
-        var packageFile = path.join(pkgPath, 'CordovaApp.Windows80_0.0.1.0_anycpu_debug_Test', 'CordovaApp.Windows80_0.0.1.0_anycpu_debug.appx');
-        var pkgInfo = pkg.getPackageFileInfo(packageFile);
-
-        expect(pkgInfo.type).toBe('windows80');
-        expect(pkgInfo.arch).toBe('anycpu');
-        expect(pkgInfo.buildtype).toBe('debug');
-    });
-
-    it('spec.8 should get file info correctly for windows 8.0 x64 release package', function() {
-        var packageFile = path.join(pkgPath, 'CordovaApp.Windows80_0.0.1.0_x64_Test', 'CordovaApp.Windows80_0.0.1.0_x64.appx');
-        var pkgInfo = pkg.getPackageFileInfo(packageFile);
-
-        expect(pkgInfo.type).toBe('windows80');
-        expect(pkgInfo.arch).toBe('x64');
-        expect(pkgInfo.buildtype).toBe('release');
-    });
-
-    it('spec.9 should get file info correctly for windows 8.1 x86 release package', function() {
+    it('spec.4 should get file info correctly for windows 8.1 x86 release package', function() {
         var packageFile = path.join(pkgPath, 'CordovaApp.Windows_0.0.1.0_x86_Test', 'CordovaApp.Windows_0.0.1.0_x86.appx');
         var pkgInfo = pkg.getPackageFileInfo(packageFile);
 
@@ -152,7 +96,7 @@ describe('getPackageFileInfo method', function() {
 });
 
 describe('getAppId method', function() {
-    it('spec.10 should properly get phoneProductId value from manifest', function(done) {
+    it('spec.5 should properly get phoneProductId value from manifest', function(done) {
         var resolve = jasmine.createSpy();
 
         pkg.getAppId(pkgRoot)
@@ -165,7 +109,7 @@ describe('getAppId method', function() {
 });
 
 describe('getPackageName method', function() {
-    it('spec.11 should properly get Application Id value from manifest', function(done) {
+    it('spec.6 should properly get Application Id value from manifest', function(done) {
         var resolve = jasmine.createSpy();
 
         pkg.getAppId(pkgRoot)
