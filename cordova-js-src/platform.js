@@ -99,7 +99,9 @@ module.exports = {
             try {
                 Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 isCoreWindowAvailable = true;
-            } catch (e) { }
+            } catch (e) {
+                console && console.log && console.log('NOTICE: CoreWindow functionality is not available');
+            }
 
             if (isCoreWindowAvailable) {
                 app.addEventListener("checkpoint", checkpointHandler);
@@ -160,6 +162,7 @@ function injectBackButtonHandler() {
                 return true;
             }
             catch (e) {
+                console && console.log && console.log('NOTICE: backbutton handler not available, ignored');
                 return false;
             }
         }

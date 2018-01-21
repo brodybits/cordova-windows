@@ -89,7 +89,11 @@ function requestFile(filePath, success, error) {
         xhr.open("get", filePath, true);
         xhr.send();
     } catch (e) {
-        fail('[Windows][cordova.js][xhrFile] Could not XHR ' + filePath + ': ' + JSON.stringify(e));
+        var msg =
+            '[Windows][cordova.js][xhrFile] Could not XHR ' + filePath + ': ' +
+                JSON.stringify(e);
+        console.error(msg);
+        fail(msg);
     }
 }
 
