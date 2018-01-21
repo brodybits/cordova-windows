@@ -2034,7 +2034,9 @@
 
         // Enter fullscreen mode
         function enterFullScreen () {
+            console.log('enterFullScreen');
             if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
+                console.log('enterFullScreen get view');
                 var view = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 view.setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
                 view.suppressSystemOverlays = true;
@@ -2043,7 +2045,9 @@
 
         // Exit fullscreen mode
         function exitFullScreen () {
+            console.log('exitFullScreen');
             if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
+                console.log('exitFullScreen get view');
                 var view = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 view.setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useVisible);
                 view.suppressSystemOverlays = false;
@@ -2052,7 +2056,9 @@
 
         // Make title bg color match splashscreen bg color
         function colorizeTitleBar () {
+            console.log('colorizeTitleBar');
             if (isWin10UWP && !isBgColorTransparent) {
+                console.log('colorizeTitleBar get view');
                 var appView =
                     Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
 
@@ -2065,7 +2071,9 @@
 
         // Revert title bg color
         function revertTitleBarColor () {
+            console.log('colorizeTitleBar');
             if (isWin10UWP && !isBgColorTransparent) {
+                console.log('colorizeTitleBar get view');
                 var appView =
                     Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
 
