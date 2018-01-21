@@ -2034,7 +2034,7 @@
 
         // Enter fullscreen mode
         function enterFullScreen () {
-            if (Windows.UI.ViewManagement.ApplicationViewBoundsMode) { // else crash on 8.1
+            if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
                 var view = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 view.setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
                 view.suppressSystemOverlays = true;
@@ -2043,7 +2043,7 @@
 
         // Exit fullscreen mode
         function exitFullScreen () {
-            if (Windows.UI.ViewManagement.ApplicationViewBoundsMode) { // else crash on 8.1
+            if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
                 var view = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 view.setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useVisible);
                 view.suppressSystemOverlays = false;
@@ -2052,8 +2052,10 @@
 
         // Make title bg color match splashscreen bg color
         function colorizeTitleBar () {
-            var appView = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
             if (isWin10UWP && !isBgColorTransparent) {
+                var appView =
+                    Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
+
                 titleInitialBgColor = appView.titleBar.backgroundColor;
 
                 appView.titleBar.backgroundColor = titleBgColor;
@@ -2063,8 +2065,10 @@
 
         // Revert title bg color
         function revertTitleBarColor () {
-            var appView = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
             if (isWin10UWP && !isBgColorTransparent) {
+                var appView =
+                    Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
+
                 appView.titleBar.backgroundColor = titleInitialBgColor;
                 appView.titleBar.buttonBackgroundColor = titleInitialBgColor;
             }
