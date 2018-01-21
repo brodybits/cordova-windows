@@ -2035,7 +2035,8 @@
         // Enter fullscreen mode
         function enterFullScreen () {
             console.log('enterFullScreen');
-            if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
+            //if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
+            if (!!Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
                 console.log('enterFullScreen get view');
                 var view = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 view.setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
@@ -2046,7 +2047,8 @@
         // Exit fullscreen mode
         function exitFullScreen () {
             console.log('exitFullScreen');
-            if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
+            //if (isWin10UWP && Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
+            if (!!Windows.UI.ViewManagement.ApplicationViewBoundsMode) {
                 console.log('exitFullScreen get view');
                 var view = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
                 view.setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useVisible);
@@ -2057,7 +2059,8 @@
         // Make title bg color match splashscreen bg color
         function colorizeTitleBar () {
             console.log('colorizeTitleBar');
-            if (isWin10UWP && !isBgColorTransparent) {
+            //if (isWin10UWP && !isBgColorTransparent) {
+            if (!!Windows.UI.ViewManagement.ApplicationViewBoundsMode && !isBgColorTransparent) {
                 console.log('colorizeTitleBar get view');
                 var appView =
                     Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
@@ -2071,9 +2074,10 @@
 
         // Revert title bg color
         function revertTitleBarColor () {
-            console.log('colorizeTitleBar');
-            if (isWin10UWP && !isBgColorTransparent) {
-                console.log('colorizeTitleBar get view');
+            console.log('revertTitleBarColor');
+            //if (isWin10UWP && !isBgColorTransparent) {
+            if (!!Windows.UI.ViewManagement.ApplicationViewBoundsMode && !isBgColorTransparent) {
+                console.log('revertTitleBarColor get view');
                 var appView =
                     Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
 
