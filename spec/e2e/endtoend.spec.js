@@ -219,6 +219,13 @@ describe('Cordova create and build', function () {
         _expectSubdirAndFileExist('CordovaApp.Phone_1.0.0.0_Test', 'CordovaApp.Phone_1.0.0.0_x64_x86_arm.appxbundle');
     });
 
+    // FUTURE TBD ???:
+    xit('spec.6c should generate appxupload and appxbundle for 8.1-win (pc) project bundle release build (all target platforms)', function () {
+        shell.exec(buildScriptPath + ' --release --appx=8.1-win --bundle --archs=\"x64 x86 arm\"', {silent: silent});
+        _expectExist(/.*bundle\.appxupload$/, 3);
+        _expectSubdirAndFileExist('CordovaApp.Phone_1.0.0.0_Test', 'CordovaApp.Phone_1.0.0.0_x64_x86_arm.appxbundle');
+    });
+
     // --release (non-bundle)
 
     xit('spec.7 should generate appxupload for Windows 10 project non-bundle release build', function () {
