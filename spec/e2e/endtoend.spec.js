@@ -71,6 +71,18 @@ describe('Cordova create and build', function () {
         expect(fs.existsSync(projectFolder)).toBe(true);
     });
 
+    it('spec.6b should generate appxupload and appxbundle for Windows 10 project bundle release build', function () {
+        shell.exec(buildScriptPath + ' --release --appx=8.1-phone --bundle --archs=\"x64 x86 arm\"', {silent: silent});
+        _expectExist(/.*bundle\.appxupload$/, 3);
+        _expectSubdirAndFileExist('CordovaApp.Phone_1.0.0.0_Test', 'CordovaApp.Phone_1.0.0.0_x64_x86_arm.appxbundle');
+    });
+
+    it('spec.6a should generate appxupload and appxbundle for Windows 10 project bundle release build', function () {
+        shell.exec(buildScriptPath + ' --release --bundle --archs=\"x64 x86 arm\"', {silent: silent});
+        _expectExist(/.*bundle\.appxupload$/, 3);
+        _expectSubdirAndFileExist('CordovaApp.Windows10_1.0.0.0_Test', 'CordovaApp.Windows10_1.0.0.0_x64_x86_arm.appxbundle');
+    });
+
     // default
 
     it('spec.2a should build default (win10) project', function () {
@@ -203,12 +215,6 @@ describe('Cordova create and build', function () {
 
     // here be 6a
 
-    it('spec.6b should generate appxupload and appxbundle for Windows 10 project bundle release build', function () {
-        shell.exec(buildScriptPath + ' --release --appx=8.1-phone --bundle --archs=\"x64 x86 arm\"', {silent: silent});
-        _expectExist(/.*bundle\.appxupload$/, 3);
-        _expectSubdirAndFileExist('CordovaApp.Phone_1.0.0.0_Test', 'CordovaApp.Phone_1.0.0.0_x64_x86_arm.appxbundle');
-    });
-
     // --release (non-bundle)
 
     it('spec.7 should generate appxupload for Windows 10 project non-bundle release build', function () {
@@ -230,9 +236,4 @@ describe('Cordova create and build', function () {
     });
 
     // this will be move up again when it is fixed for VS 2017
-    it('spec.6a should generate appxupload and appxbundle for Windows 10 project bundle release build', function () {
-        shell.exec(buildScriptPath + ' --release --bundle --archs=\"x64 x86 arm\"', {silent: silent});
-        _expectExist(/.*bundle\.appxupload$/, 3);
-        _expectSubdirAndFileExist('CordovaApp.Windows10_1.0.0.0_Test', 'CordovaApp.Windows10_1.0.0.0_x64_x86_arm.appxbundle');
-    });
 });
