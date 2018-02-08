@@ -64,7 +64,9 @@ describe('Cordova create and build', function () {
 
     afterEach(function () {
         shell.cd(buildDirectory);
-        shell.rm('-rf', projectFolder);
+        // shell.rm('-rf', projectFolder);
+        shell.mv(projectFolder, 'trash');
+        shell.rm('-rf', 'trash');
     });
 
     it('spec.1 should create new project', function () {
