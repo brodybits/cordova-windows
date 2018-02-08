@@ -17,7 +17,7 @@
     "apache"
   ],
   "scripts": {
-    "test": "npm run eslint && npm run test-unit && npm run test-e2e",
+    "test": "npm run eslint && npm run test-e2e",
     "test-unit": "jasmine",
     "test-e2e": "jasmine spec/e2e/endtoend.spec.js",
     "cover": "istanbul cover --root bin/templates/cordova --print detail jasmine",
