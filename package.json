@@ -33,7 +33,7 @@
     "shelljs": "^0.5.3",
     "winjs": "^4.4.3"
   },
-  "devDependencies": {
+  "devDependenciesIgnoredForNow": {
     "eslint": "^4.18.0",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
