@@ -26,7 +26,6 @@
   "dependencies": {
     "cordova-common": "^2.2.5",
     "node-uuid": "^1.4.8",
-    "nopt": "^3.0.4",
     "q": "^1.5.1",
     "semver": "^5.5.0",
     "shelljs": "^0.5.3",
@@ -48,7 +47,6 @@
   "bundledDependencies": [
     "cordova-common",
     "node-uuid",
-    "nopt",
     "q",
     "semver",
     "shelljs",
