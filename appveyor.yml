@@ -22,10 +22,10 @@
 environment:
   matrix:
     - nodejs_version: "6"
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - nodejs_version: "6"
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 matrix:
   allow_failures:
