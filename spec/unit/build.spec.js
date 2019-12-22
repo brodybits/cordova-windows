@@ -257,18 +257,6 @@ describe('run method', function () {
         );
     });
 
-    it('spec.9 should call buildProject of MSBuildTools if built for windows 8.1', function () {
-        var buildSpy = jasmine.createSpy();
-
-        createFindAllAvailableVersionsMock([{ version: '14.0', buildProject: buildSpy, path: testPath }]);
-        createConfigParserMock('8.1');
-
-        return build.run({ argv: ['--win'] })
-            .finally(function () {
-                expect(buildSpy).toHaveBeenCalled();
-            });
-    });
-
     xit('spec.10 should throw an error if windows-target-version has unsupported value', function () {
         var buildSpy = jasmine.createSpy();
 
@@ -284,18 +272,6 @@ describe('run method', function () {
         );
     });
 
-    it('spec.11 should call buildProject of MSBuildTools if built for windows phone 8.1', function () {
-        var buildSpy = jasmine.createSpy();
-
-        createFindAllAvailableVersionsMock([{ version: '14.0', buildProject: buildSpy, path: testPath }]);
-        createConfigParserMock(null, '8.1');
-
-        return build.run({ argv: ['--phone'] })
-            .finally(function () {
-                expect(buildSpy).toHaveBeenCalled();
-            });
-    });
-
     xit('spec.12 should throw an error if windows-phone-target-version has unsupported value', function () {
         var buildSpy = jasmine.createSpy();
 
@@ -309,38 +285,6 @@ describe('run method', function () {
                 expect(buildSpy).not.toHaveBeenCalled();
             }
         );
-    });
-
-    it('spec.13a should be able to override target via --appx parameter', function () {
-        var buildSpy = jasmine.createSpy().and.callFake(function (solutionFile, buildType, buildArch) {
-            // check that we build Windows 10 and not Windows 8.1
-            expect(solutionFile.toLowerCase()).toMatch('cordovaapp.windows10.jsproj');
-        });
-
-        createFindAllAvailableVersionsMock([{ version: '14.0', buildProject: buildSpy, path: testPath }]);
-        // provision config to target Windows 8.1
-        createConfigParserMock('8.1', '8.1');
-        // explicitly specify Windows 10 as target
-        return build.run({ argv: ['--appx=uap'] })
-            .finally(function () {
-                expect(buildSpy).toHaveBeenCalled();
-            });
-    });
-
-    it('spec.13b should be able to override target via --appx parameter', function () {
-        var buildSpy = jasmine.createSpy().and.callFake(function (solutionFile, buildType, buildArch) {
-            // check that we build Windows 10 and not Windows 8.1
-            expect(solutionFile.toLowerCase()).toMatch('cordovaapp.windows10.jsproj');
-        });
-
-        createFindAllAvailableVersionsMock([{ version: '14.0', buildProject: buildSpy, path: testPath }]);
-        // provision config to target Windows 8.1
-        createConfigParserMock('8.1', '8.1');
-        // explicitly specify Windows 10 as target
-        return build.run({ argv: ['--appx=uwp'] })
-            .finally(function () {
-                expect(buildSpy).toHaveBeenCalled();
-            });
     });
 
     it('spec.14a should use user-specified msbuild if VSINSTALLDIR variable is set', function () {
